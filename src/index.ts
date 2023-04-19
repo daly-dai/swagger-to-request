@@ -1,13 +1,9 @@
 import { generateRequestBody } from './generate/generateRequestBody';
 import { generateTypes } from './generate/generateTypes';
-import type {
-  Config,
-  SwaggerDocType,
-  Tags,
-} from './type'
 
 import axios, { AxiosResponse } from 'axios'
 import { setTargetFolder } from './utils';
+import { Config, SwaggerDocType, Tags } from '..';
 
 async function generateRequest(config: Config) {
   let result!: AxiosResponse<SwaggerDocType, any>;
@@ -25,7 +21,6 @@ async function generateRequest(config: Config) {
   // 创建指定文件夹
   setTargetFolder(config)
 
-
   try {
     result = await axios.get<SwaggerDocType>(url)
   } catch (error) {
@@ -33,12 +28,10 @@ async function generateRequest(config: Config) {
     return
   }
 
-
   if (!Object.keys(result)?.length) return;
 
   const { data } = result;
   const { definitions = {}, tags } = data || {};
-
 
   const definitionsMap = generateTypes(definitions || {}, config);
 
@@ -47,4 +40,9 @@ async function generateRequest(config: Config) {
   generateRequestBody({ paths: data?.paths || {}, globalTags, config, definitionsMap })
 }
 
-export default generateRequest
+generateRequest({
+  url: 'http://10.10.203.163:8081/crm-boot/v2/api-docs',
+  output: "./src/service"
+})
+
+// export default generateRequest

@@ -60,7 +60,6 @@ export interface PathItem {
   [method: string]: MethodItem
 }
 
-
 export type Method =
   | 'get' | 'GET'
   | 'delete' | 'DELETE'

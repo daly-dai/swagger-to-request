@@ -40,9 +40,4 @@ async function generateRequest(config: Config) {
   generateRequestBody({ paths: data?.paths || {}, globalTags, config, definitionsMap })
 }
 
-generateRequest({
-  url: 'http://10.10.203.163:8081/crm-boot/v2/api-docs',
-  output: "./src/service"
-})
-
-// export default generateRequest
+export default generateRequest

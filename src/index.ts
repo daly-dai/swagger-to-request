@@ -1,13 +1,9 @@
 import { generateRequestBody } from './generate/generateRequestBody';
 import { generateTypes } from './generate/generateTypes';
-import type {
-  Config,
-  SwaggerDocType,
-  Tags,
-} from './type'
 
 import axios, { AxiosResponse } from 'axios'
 import { setTargetFolder } from './utils';
+import { Config, SwaggerDocType, Tags } from '..';
 
 async function generateRequest(config: Config) {
   let result!: AxiosResponse<SwaggerDocType, any>;

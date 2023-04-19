@@ -2,7 +2,7 @@
   "name": "swagger-to-request",
   "description": "swagger generate request code",
   "author": "dsh <18094277434@163.com>",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",

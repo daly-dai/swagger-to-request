@@ -1,5 +1,5 @@
 import { SERVICE_TYPES_NAME } from "../static"
-import { ConvertItem, GlobalFileTag, Method, Paths, GenerateRequestBody, Config, StrObj } from "../.."
+import { ConvertItem, GlobalFileTag, Method, Paths, GenerateRequestBody, Config, StrObj } from "../type"
 import { capitalizedWord, getCamelCase, getTargetFolderPath, getType, lowerWord } from "../utils"
 import fs from 'fs';
 

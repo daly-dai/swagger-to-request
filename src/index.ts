@@ -3,7 +3,7 @@ import { generateTypes } from './generate/generateTypes';
 
 import axios, { AxiosResponse } from 'axios'
 import { setTargetFolder } from './utils';
-import { Config, SwaggerDocType, Tags } from '..';
+import { Config, SwaggerDocType, Tags } from './type';
 
 async function generateRequest(config: Config) {
   let result!: AxiosResponse<SwaggerDocType, any>;

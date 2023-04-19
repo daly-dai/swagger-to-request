@@ -6,6 +6,8 @@
 
 ### 文档将会生成在 ${output}/swagger 文件夹中
 
+**所有的类型会生成在方法前与 serviceTypes.ts 文件中**
+
 ```javascript
   // 默认使用
   import generateRequest from 'swagger-to-request';

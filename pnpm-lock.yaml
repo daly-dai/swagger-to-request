@@ -24,6 +24,9 @@ devDependencies:
   rollup-plugin-commonjs:
     specifier: ^10.1.0
     version: registry.npmjs.org/rollup-plugin-commonjs@10.1.0(rollup@3.20.6)
+  rollup-plugin-dts:
+    specifier: ^5.3.0
+    version: registry.npmjs.org/rollup-plugin-dts@5.3.0(rollup@3.20.6)(typescript@5.0.3)
   rollup-plugin-node-resolve:
     specifier: ^5.2.0
     version: registry.npmjs.org/rollup-plugin-node-resolve@5.2.0(rollup@3.20.6)
@@ -1087,6 +1090,15 @@ packages:
       sourcemap-codec: registry.npmjs.org/sourcemap-codec@1.4.8
     dev: true
 
+  registry.npmjs.org/magic-string@0.30.0:
+    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/magic-string/-/magic-string-0.30.0.tgz}
+    name: magic-string
+    version: 0.30.0
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': registry.npmjs.org/@jridgewell/sourcemap-codec@1.4.15
+    dev: true
+
   registry.npmjs.org/mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz}
     name: mime-db
@@ -1218,6 +1230,23 @@ packages:
       resolve: registry.npmjs.org/resolve@1.22.2
       rollup: registry.npmjs.org/rollup@3.20.6
       rollup-pluginutils: registry.npmjs.org/rollup-pluginutils@2.8.2
+    dev: true
+
+  registry.npmjs.org/rollup-plugin-dts@5.3.0(rollup@3.20.6)(typescript@5.0.3):
+    resolution: {integrity: sha512-8FXp0ZkyZj1iU5klkIJYLjIq/YZSwBoERu33QBDxm/1yw5UU4txrEtcmMkrq+ZiKu3Q4qvPCNqc3ovX6rjqzbQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/rollup-plugin-dts/-/rollup-plugin-dts-5.3.0.tgz}
+    id: registry.npmjs.org/rollup-plugin-dts/5.3.0
+    name: rollup-plugin-dts
+    version: 5.3.0
+    engines: {node: '>=v14'}
+    peerDependencies:
+      rollup: ^3.0.0
+      typescript: ^4.1 || ^5.0
+    dependencies:
+      magic-string: registry.npmjs.org/magic-string@0.30.0
+      rollup: registry.npmjs.org/rollup@3.20.6
+      typescript: registry.npmjs.org/typescript@5.0.3
+    optionalDependencies:
+      '@babel/code-frame': registry.npmjs.org/@babel/code-frame@7.21.4
     dev: true
 
   registry.npmjs.org/rollup-plugin-node-resolve@5.2.0(rollup@3.20.6):

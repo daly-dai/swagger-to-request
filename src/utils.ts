@@ -1,5 +1,5 @@
 import { CONVERT_TYPE_MAP, TARGET_FOLDER } from "./static"
-import { Config, IntegratedType, VoProp } from ".."
+import { Config, IntegratedType, VoProp } from "./type"
 
 import fs from 'fs'
 

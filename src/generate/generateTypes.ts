@@ -1,5 +1,5 @@
 import { SERVICE_TYPES_NAME } from "../static";
-import { Config, DftItem, ResultDefinitionType, StrObj, Vo } from "../..";
+import { Config, DftItem, ResultDefinitionType, StrObj, Vo } from "../type";
 import { formateTypesName, getTargetFolderPath, getType } from "../utils";
 import fs from 'fs'
 

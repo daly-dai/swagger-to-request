@@ -55,13 +55,13 @@ generateRequest({
   },
 });
 
-// 默认生成代码未
+// 默认生成代码为
 import { request } from "@umijs/max";
 
 export const testBootApprovalApprovalByPost = (data: ApprovalDTO) =>
   request < R > (`/crm-boot/approval/approval`, { method: "post", data });
 
-// 自定义配置之后生成代码未
+// 自定义配置之后生成代码为
 import axios from "axios";
 
 export const crmBootRegionListByPost = (data: RegionSearchDTO) =>

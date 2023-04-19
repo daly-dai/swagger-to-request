@@ -40,13 +40,4 @@ async function generateRequest(config: Config) {
   generateRequestBody({ paths: data?.paths || {}, globalTags, config, definitionsMap })
 }
 
-generateRequest({
-  url: 'http://10.10.203.163:8081/crm-boot/v2/api-docs',
-  output: "./src/service",
-  // requestStr: "import axios from 'axios'",
-  // customFunBody: ({ queryStr, bodyStr, resType, requestUrl, serviceName, fetchMethod }): string => {
-  //   return `export const ${serviceName} = (${queryStr ? 'params: ' + queryStr : ''} ${bodyStr ? 'data:' + bodyStr : ''}) => axios.${fetchMethod}<${resType}>(\`${requestUrl}\`, {${queryStr ? ' params, ' : ' '}${bodyStr ? 'data' : ''} })\n\n`
-  // }
-})
-
-// export default generateRequest
+export default generateRequest

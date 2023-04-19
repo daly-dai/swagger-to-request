@@ -2,6 +2,7 @@ export interface Config {
   url: string;
   output: string;
   templates?: string;
+  requestStr?: string;
   customFunBody?: (body: {
     // get请求传参
     queryStr: string;

@@ -54,7 +54,14 @@ const convertPath = (path: string) => {
 }
 
 const getImportStr = (importType: string[]) => {
-  let str = `import { request } from '@umijs/max'\n\n`
+  let str!: string
+
+  if (globalConfig?.requestStr) {
+    str = globalConfig?.requestStr
+  } else {
+    str = `import { request } from '@umijs/max'\n\n`
+  }
+
   importType.forEach((item, index) => {
     if (index === 0) {
       str += `import { `

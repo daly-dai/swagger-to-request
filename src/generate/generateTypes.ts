@@ -49,10 +49,7 @@ export function generateTypes(definitions: DftItem, config: Config): StrObj {
 
       const { name, typesContent } = getDefinitionType(prop, definitions[prop])
 
-      // console.log(name, "name")
       dftStr += typesContent
-
-
       definitionsMap[name] = typesContent
     }
   })

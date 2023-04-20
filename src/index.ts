@@ -1,12 +1,13 @@
 import { generateRequestBody } from './generate/generateRequestBody';
 import { generateTypes } from './generate/generateTypes';
 
-import axios, { AxiosResponse } from 'axios'
+// import axios, { AxiosResponse } from 'axios'
+import superagent from 'superagent'
 import { setTargetFolder } from './utils';
 import { Config, GenerateRequest, SwaggerDocType, Tags } from './type';
 
 const generateRequest: GenerateRequest = async (config: Config) => {
-  let result!: AxiosResponse<SwaggerDocType, any>;
+  let result!: any;
 
   const { url = '', output } = config;
 
@@ -22,22 +23,24 @@ const generateRequest: GenerateRequest = async (config: Config) => {
   setTargetFolder(config)
 
   try {
-    result = await axios.get<SwaggerDocType>(url)
+    result = await superagent.get(url) as any
   } catch (error) {
     console.error(error)
     return
   }
 
-  if (!Object.keys(result)?.length) return;
+  const { body } = result;
 
-  const { data } = result;
-  const { definitions = {}, tags } = data || {};
+
+  if (!Object.keys(body)?.length) return;
+
+  const { definitions = {}, tags, paths } = body || {};
 
   const definitionsMap = generateTypes(definitions || {}, config);
 
   const globalTags = tags.map((item: Tags) => ({ ...item, serviceStr: '', importType: [] }))
 
-  generateRequestBody({ paths: data?.paths || {}, globalTags, config, definitionsMap })
+  generateRequestBody({ paths: paths || {}, globalTags, config, definitionsMap })
 }
 
-export default generateRequest
+export { generateRequest }

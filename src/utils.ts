@@ -7,7 +7,6 @@ export const capitalizedWord = (word: string): string => word.charAt(0).toUpperC
 
 export const lowerWord = (word: string): string => word.charAt(0).toLowerCase() + word.slice(1)
 
-
 /**
  * @description 横线转换成驼峰
  * @param str 
@@ -18,7 +17,6 @@ export function getCamelCase(str: string) {
     return capitalizedWord(i)
   })
 }
-
 
 export const handleRefType = (str: string): string | undefined => str.split('/')?.pop()?.replaceAll('«', '')?.replaceAll('»', '')
 
@@ -48,7 +46,6 @@ export const getArrayType = (detail: IntegratedType | VoProp) => {
   }
 }
 
-
 export const getCmdPath = (path: string, outPutPath?: string) => {
   let result!: string;
 
@@ -62,13 +59,11 @@ export const getCmdPath = (path: string, outPutPath?: string) => {
   return result
 }
 
-
 export const formateTypesName = (name: string) => {
   if (!name) return name;
 
-  return name.replaceAll('[', '').replaceAll(']', '').replaceAll("»", '').replaceAll("«", '')
+  return name.replaceAll('[', '').replaceAll(']', '').replaceAll("»", '').replaceAll("«", '').replaceAll(",", "")
 }
-
 
 /**
  * @description 获取生成文件夹的目标路径
@@ -95,7 +90,6 @@ export function setTargetFolder(config: Config) {
   const path = getTargetFolderPath(config)
 
   if (fs.existsSync(path)) return;
-
 
   fs.mkdir(path, (err) => {
     if (err) throw err; // 如果出现错误就抛出错误信息

@@ -1,4 +1,4 @@
-export type GenerateRequest = (body: Config) => void
+export type generateRequest = (body: Config) => void
 export interface Config {
   url: string;
   output: string;

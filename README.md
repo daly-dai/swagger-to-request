@@ -10,7 +10,7 @@
 
 ```javascript
   // 默认使用
-  import generateRequest from 'swagger-to-request';
+  import { generateRequest } from 'swagger-to-request';
 
   generateRequest({
     url:'http://test:8081/test-boot/v2/api-docs' // 文档的请求地址

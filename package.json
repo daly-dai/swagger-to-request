@@ -1,18 +1,18 @@
 {
   "name": "swagger-to-request",
   "description": "swagger generate request code",
-  "author": "dsh <18094277434@163.com>",
+  "author": "dsh",
   "version": "0.0.5",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.es",
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     }
   },
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
-  "browser": "./dist/index.ts",
+  "browser": "./dist/index.es.js",
   "scripts": {
     "test": "esno ./test/index.ts",
     "geneTypes": "tsc -b ./tsconfig.types.json",
@@ -24,7 +24,7 @@
     "typescript"
   ],
   "authors": {
-    "name": "dsh <18094277434@163.com>",
+    "name": "dsh",
     "email": "18094277434@163.com"
   },
   "license": "MIT",

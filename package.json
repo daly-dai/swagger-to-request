@@ -2,7 +2,7 @@
   "name": "swagger-to-request",
   "description": "swagger generate request code",
   "author": "dsh",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",

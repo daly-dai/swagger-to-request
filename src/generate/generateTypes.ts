@@ -42,16 +42,20 @@ export function generateTypes(definitions: DftItem, config: Config): StrObj {
   const definitionsMap: { [key in string]: string } = {}
   let dftStr = '';
 
+
   Object.keys(definitions).forEach((prop: string) => {
     const curValue = definitions[prop];
 
-    if (curValue.type === 'object') {
+    if (curValue.type !== 'object') return
 
-      const { name, typesContent } = getDefinitionType(prop, definitions[prop])
+    // 如果为空对象的定义时时则不处理
+    if (!Object.keys(curValue?.properties || {})?.length) return
 
-      dftStr += typesContent
-      definitionsMap[name] = typesContent
-    }
+    const { name, typesContent } = getDefinitionType(prop, definitions[prop])
+
+    dftStr += typesContent
+    definitionsMap[name] = typesContent
+
   })
 
   fs.writeFile(`${getTargetFolderPath(config)}/${SERVICE_TYPES_NAME}.ts`, dftStr, (err: any) => {

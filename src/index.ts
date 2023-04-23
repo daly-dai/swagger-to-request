@@ -1,13 +1,11 @@
 import { generateRequestBody } from './generate/generateRequestBody';
 import { generateTypes } from './generate/generateTypes';
 
-// import axios, { AxiosResponse } from 'axios'
-// import superagent from 'superagent'
-import request from 'request'
+import superagent from 'superagent'
 import { setTargetFolder } from './utils';
-import { Config, SwaggerDocType, Tags } from './type';
+import { Config, generateRequest, Tags } from './type';
 
-const generateRequest = async (config: Config) => {
+const generateRequest: generateRequest = async (config: Config) => {
   let result!: any;
 
   const { url = '', output } = config;
@@ -23,23 +21,24 @@ const generateRequest = async (config: Config) => {
   // 创建指定文件夹
   setTargetFolder(config)
 
-  // try {
-  result = await request.get(url, { json: true }, (error, response, body: SwaggerDocType) => {
-    if (error) {
-      return console.log(error);
-    }
+  try {
+    result = await superagent.get(url) as any
+  } catch (error) {
+    console.error(error)
+    return
+  }
 
-    if (!Object.keys(body)?.length) return;
+  const { body } = result;
 
-    const { definitions = {}, tags, paths } = body || {};
+  if (!Object.keys(body)?.length) return;
 
-    const definitionsMap = generateTypes(definitions || {}, config);
+  const { definitions = {}, tags, paths } = body || {};
 
-    const globalTags = tags.map((item: Tags) => ({ ...item, serviceStr: '', importType: [] }))
+  const definitionsMap = generateTypes(definitions || {}, config);
 
-    generateRequestBody({ paths: paths || {}, globalTags, config, definitionsMap })
+  const globalTags = tags.map((item: Tags) => ({ ...item, serviceStr: '', importType: [] }))
 
-  })
+  generateRequestBody({ paths: paths || {}, globalTags, config, definitionsMap })
 }
 
 export { generateRequest }

@@ -98,6 +98,10 @@ export function getTargetFolderPath(config: Config): string {
 export function setTargetFolder(config: Config) {
   const path = getTargetFolderPath(config);
 
+  if (!fs.existsSync(config?.output || '')) {
+    throw (`${config?.output}文件路径不存在`)
+  }
+
   if (fs.existsSync(path)) return;
 
   fs.mkdir(path, (err) => {

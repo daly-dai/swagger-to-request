@@ -5,13 +5,13 @@
   "version": "0.0.5",
   "exports": {
     ".": {
-      "import": "./dist/index.es",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/type.d.ts"
     }
   },
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "types": "./dist/type.d.ts",
   "browser": "./dist/index.es.js",
   "scripts": {
     "test": "esno ./test/index.ts",
@@ -19,13 +19,14 @@
     "build": "rimraf -rf ./dist && rollup --config"
   },
   "keywords": [
+    "umi",
     "swagger",
-    "axios",
+    "superagent",
     "typescript"
   ],
   "authors": {
     "name": "dsh",
-    "email": "18094277434@163.com"
+    "email": ""
   },
   "license": "MIT",
   "files": [
@@ -34,7 +35,7 @@
   "devDependencies": {
     "@rollup/plugin-strip": "^3.0.2",
     "@types/node": "^18.15.11",
-    "@types/request": "^2.48.8",
+    "@types/superagent": "^4.1.16",
     "esno": "^0.16.3",
     "rimraf": "^5.0.0",
     "rollup": "^3.20.6",
@@ -48,6 +49,6 @@
     "typescript": "^5.0.3"
   },
   "dependencies": {
-    "request": "^2.88.2"
+    "superagent": "^8.0.9"
   }
 }

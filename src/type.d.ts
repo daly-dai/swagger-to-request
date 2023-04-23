@@ -1,4 +1,4 @@
-export type generateRequest = (body: Config) => void
+export type GenerateRequest = (body: Config) => void
 export interface Config {
   url: string;
   output: string;
@@ -131,3 +131,5 @@ export interface ResultDefinitionType {
   name: string;
   typesContent: string
 }
+
+export declare function generateRequest(body: Config): void

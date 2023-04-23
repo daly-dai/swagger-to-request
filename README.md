@@ -2,6 +2,28 @@
 
 **swagger 自动生成 service 相关请求文件**
 
+**该工具的定位为辅助前端进行接口类型定义**
+
+**所有的接口类型都会放在 serviceTypes 文件中**
+
+## 使用方式
+
+```javascript
+// package.json文件
+  "scripts":{
+    "swa":"esno ./src/swagger.ts"
+  }
+
+// swagger.ts
+  import { generateRequest } from 'swagger-to-request';
+
+  generateRequest({
+    url:'http://test:8081/test-boot/v2/api-docs' // 文档的请求地址
+    output:'./src/service' // 代码会生成在'./src/service/swagger中'
+  })
+
+```
+
 ## 工具使用必传的参数为*url,output*
 
 ### 文档将会生成在 ${output}/swagger 文件夹中

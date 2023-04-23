@@ -3,9 +3,10 @@ import { generateTypes } from './generate/generateTypes';
 
 import superagent from 'superagent'
 import { setTargetFolder } from './utils';
-import { Config, generateRequest, Tags } from './type';
+import { Config, GenerateRequest, Tags } from './type';
 
-const generateRequest: generateRequest = async (config: Config) => {
+const generateRequest: GenerateRequest = async (config: Config) => {
+  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   let result!: any;
 
   const { url = '', output } = config;
@@ -22,6 +23,7 @@ const generateRequest: generateRequest = async (config: Config) => {
   setTargetFolder(config)
 
   try {
+    // rome-ignore lint/suspicious/noExplicitAny: <explanation>
     result = await superagent.get(url) as any
   } catch (error) {
     console.error(error)
@@ -41,4 +43,4 @@ const generateRequest: generateRequest = async (config: Config) => {
   generateRequestBody({ paths: paths || {}, globalTags, config, definitionsMap })
 }
 
-export { generateRequest }
+export { generateRequest } 

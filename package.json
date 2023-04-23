@@ -14,7 +14,7 @@
   "types": "./dist/type.d.ts",
   "browser": "./dist/index.es.js",
   "scripts": {
-    "test": "esno ./test/index.ts",
+    "swa": "esno ./test/index.ts",
     "geneTypes": "tsc -b ./tsconfig.types.json",
     "build": "rimraf -rf ./dist && rollup --config"
   },

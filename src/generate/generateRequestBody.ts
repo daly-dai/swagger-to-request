@@ -1,6 +1,6 @@
 import { SERVICE_TYPES_NAME } from "../static"
 import { ConvertItem, GlobalFileTag, Method, Paths, GenerateRequestBody, Config, StrObj } from "../type"
-import { capitalizedWord, getCamelCase, getTargetFolderPath, getType, lowerWord } from "../utils"
+import { capitalizedWord, formateTypesName, getCamelCase, getTargetFolderPath, getType, lowerWord } from "../utils"
 import fs from 'fs';
 
 let globalConfig!: Config;
@@ -66,7 +66,8 @@ const getImportStr = (importType: string[]) => {
     if (index === 0) {
       str += `import { `
     }
-    str += `${item.replaceAll("»", '>').replaceAll("«", '<')}, `
+
+    str += `${formateTypesName(item)}, `
     if (index === importType.length - 1) {
       str += `} from './${SERVICE_TYPES_NAME}'\n\n`
     }
@@ -101,8 +102,6 @@ export function dispatchRequestBody(paths: Paths, globalTags: GlobalFileTag[]) {
 
         globalTags.push(tagInfo)
       }
-
-
 
       const normalResponse = methodValueObj.responses['200'] ? methodValueObj.responses['200'].schema : undefined
       const resType = getType(normalResponse)
@@ -167,7 +166,7 @@ export function dispatchRequestBody(paths: Paths, globalTags: GlobalFileTag[]) {
           fetchMethod: (fetchMethod as Method)
         })
       } else {
-        serviceStr += `export const ${serviceName} = (${queryStr ? 'params: ' + queryStr : ''} ${bodyStr ? 'data:' + bodyStr : ''}) => request<${resType}>(\`${convertPath(prop)}\`, {method:'${fetchMethod}',${queryStr ? ' params, ' : ' '}${bodyStr ? 'data' : ''} })\n\n`
+        serviceStr += `export const ${serviceName} = (${queryStr ? 'params: ' + queryStr : ''} ${bodyStr ? 'data:' + bodyStr : ''}) => request<${resType}>(\'${convertPath(prop)}\', {method:'${fetchMethod}',${queryStr ? ' params, ' : ' '}${bodyStr ? 'data' : ''} })\n\n`
       }
 
 
@@ -182,7 +181,7 @@ export function generateRequestBody({ paths, globalTags, config, definitionsMap 
   globalTypesMap = definitionsMap;
 
   dispatchRequestBody(paths, globalTags);
-  // return;
+
   globalTags.forEach(tagFile => {
     const name = tagFile?.value || tagFile.name;
     const fileName = lowerWord(name.replace(/\s*/g, '')) + '.ts'

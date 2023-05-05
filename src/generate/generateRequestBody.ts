@@ -13,42 +13,33 @@ const getServiceName = (path: string, fetchMethod: Method) => {
   plist.push('by')
   plist.push(fetchMethod)
 
+  plist.shift();
+
   return plist.map((item, index) => {
     let stashItem = item;
+    // 去掉{}
+    if (item.indexOf('{') >= 0) stashItem = item.slice(1, item.length - 1);
 
-    if (item.indexOf('{') >= 0) {
-      // 去掉{}
-      stashItem = item.slice(1, item.length - 1)
-    }
+    if (index === 0) return stashItem
 
-    if (index === 0) {
-      return stashItem
-    } else {
-      return capitalizedWord(stashItem)
-    }
+    return capitalizedWord(stashItem)
   }).join('')
 }
 
 const getParamsStr = (queryParams: ConvertItem[]) => {
   let paramsStr = ''
+
   queryParams.forEach((item, index) => {
-    if (index === 0) {
-      paramsStr = '{ '
-    }
-    paramsStr += `${item.name}${item.required ? '' : '?'}: ${item.type}; `
-    if (index === queryParams.length - 1) {
-      paramsStr += '}'
-    }
+    paramsStr += `${item.name}${item.required ? '' : '?'}: ${item.type}; `;
   })
 
-  return paramsStr
+  return `{${paramsStr}}`
 }
 
 const convertPath = (path: string) => {
   return path.split('/').map(item => {
-    if (item.indexOf('{') >= 0) {
-      return `$${item}`
-    }
+    if (item.indexOf('{') >= 0) return `$${item}`
+
     return item
   }).join('/')
 }

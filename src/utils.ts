@@ -21,7 +21,7 @@ export function getCamelCase(str: string) {
 }
 
 export const handleRefType = (str: string): string | undefined =>
-  str.split('/')?.pop()?.replace(/«/g, '')?.replace(/»/g, '');
+  str.split('/')?.pop()?.replace(/«/g, '')?.replace(/»/g, '').replace(/[\u4e00-\u9fa5]/g, '');
 
 export const getType = (
   typeObj?: IntegratedType | VoProp,
@@ -72,7 +72,8 @@ export const formateTypesName = (name: string) => {
     .replace(/\]/g, '')
     .replace(/»/g, '')
     .replace(/«/g, '')
-    .replace(/,/g, '');
+    .replace(/,/g, '')
+    .replace(/[\u4e00-\u9fa5]/g, '');
 };
 
 /**

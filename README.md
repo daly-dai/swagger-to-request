@@ -18,6 +18,7 @@
   import { generateRequest } from 'swagger-to-request';
 
   generateRequest({
+    //  url:'http://test:8081/test-boot/v2/request.json' json文件也可以
     url:'http://test:8081/test-boot/v2/api-docs' // 文档的请求地址
     output:'./src/service' // 代码会生成在'./src/service/swagger中'
   })

@@ -10,6 +10,8 @@ import typescript from "rollup-plugin-typescript";
 import dts from "rollup-plugin-dts";
 // 打包产物清除调试代码
 import strip from "@rollup/plugin-strip";
+// 压缩代码
+import { terser } from "rollup-plugin-terser";
 
 const plugins = [
   typescript({
@@ -21,6 +23,7 @@ const plugins = [
     devDeps: false, // devDependencies 类型的依赖就不用加到 externals 了。
   }),
   strip(),
+  terser(),
 ];
 export default defineConfig([
   {

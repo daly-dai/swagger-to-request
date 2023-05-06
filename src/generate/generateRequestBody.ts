@@ -33,7 +33,7 @@ const getParamsStr = (queryParams: ConvertItem[]) => {
     paramsStr += `${item.name}${item.required ? '' : '?'}: ${item.type}; `;
   })
 
-  return `{${paramsStr}}`
+  return `{${paramsStr}},`
 }
 
 const convertPath = (path: string) => {

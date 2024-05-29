@@ -1,11 +1,11 @@
 import { defineConfig } from "rollup";
 // 让 rollup 能够处理外部依赖
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 // 自动将外部类库声明为 externals
 import externals from "rollup-plugin-node-externals";
 // 打包ts文件
-import typescript from "rollup-plugin-typescript";
+import typescript from "@rollup/plugin-typescript";
 // 生成 d.ts 文件
 import dts from "rollup-plugin-dts";
 // 打包产物清除调试代码
